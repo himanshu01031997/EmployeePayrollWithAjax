@@ -1,0 +1,96 @@
+﻿@model EmpPayrollMVCWithAjax.Models.EmpModel
+
+@{
+    ViewData["Title"] = "AddOrEdit";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/Edit.css" />
+
+@*<h1>AddOrEdit</h1>
+<h4>EmpModel</h4>
+<hr />*@
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.EmpID" onsubmit="return jQueryAjaxPost(this);" autocomplete="off">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="EmpID" class="control-label"></label>
+                <input  asp-for="EmpID" class="form-control" />
+                <span asp-validation-for="EmpID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="EmpName" class="control-label"></label>
+                <input asp-for="EmpName" class="form-control" />
+                <span asp-validation-for="EmpName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfileImg" class="control-label"></label>
+                    <div>
+                        @Html.RadioButtonFor(model => model.ProfileImg, "~/assets/profile-images/Ellipse -1.png")
+                        <img class="Profile-img-1" src="~/assets/profile-images/Ellipse -1.png"  />
+                        @Html.RadioButtonFor(model => model.ProfileImg, "~/assets/profile-images/Ellipse -3.png")
+                        <img class="Profile-img-1" src="~/assets/profile-images/Ellipse -3.png"  />
+                        @Html.RadioButtonFor(model => model.ProfileImg, "~/assets/profile-images/Ellipse -2.png")
+                        <img class="Profile-img-1" src="~/assets/profile-images/Ellipse -2.png"  />
+                        @Html.RadioButtonFor(model => model.ProfileImg, "~/assets/profile-images/Ellipse -5.png")
+                        <img class="Profile-img-1" src="~/assets/profile-images/Ellipse -5.png"  />
+                    </div>                
+                <span asp-validation-for="ProfileImg" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label asp-for="Gender" class="control-label"></label>
+                            <select asp-for="Gender" class="control-label">
+                                 <option>Male</option>
+                                 <option>Female</option>
+                            </select>                   
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                 </div>
+
+                 <div class="col-md-6">
+                     <div class="form-group">
+                         <label asp-for="Department" class="control-label"></label>
+                            <select asp-for="Department" class="control-label">
+                                 <option>HR</option>
+                                 <option>Sales</option>
+                                 <option>Finance</option>
+                                 <option>Engineering</option>
+                                 <option>Other</option>
+                            </select> 
+                            <span asp-validation-for="Department" class="text-danger"></span>
+                      </div>
+                 </div>
+             </div>
+            
+            
+            <div class="form-group">
+                <label asp-for="Salary" class="control-label"></label>
+                <input asp-for="Salary" class="form-control" />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="submit" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div >
+    <a asp-action="GetAllEmloyee">Back to List</a>
+</div>*@
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
